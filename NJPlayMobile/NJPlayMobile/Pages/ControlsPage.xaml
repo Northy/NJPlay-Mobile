@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NJPlayMobile.Pages.ControlsPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <StackLayout Orientation="Vertical" VerticalOptions="Start">
+                <StackLayout Orientation="Horizontal">
+                    <Button x:Name="bSolicitar" Text="Solicitar" HorizontalOptions="StartAndExpand"/>
+                    <Picker x:Name="videoPicker" HorizontalOptions="FillAndExpand"/>
+                    <Button x:Name="bSelect" Text="Selecionar" HorizontalOptions="End"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                <StackLayout Orientation="Horizontal">
+                    <Button x:Name="bPlay" Text="Play" HorizontalOptions="FillAndExpand"/>
+                    <Button x:Name="bPause" Text="Pause" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Button x:Name="bReturn" Text="  &lt;&lt;  " HorizontalOptions="FillAndExpand"/>
+                    <Label TextColor="Black" Text="Retroceder/Avançar" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
+                    <Button x:Name="bSkip" Text="  &gt;&gt;  " HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Orientation="Vertical" VerticalOptions="End">
+                <Label FontSize="Large" TextColor="Black" Text="NJPlay" HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
