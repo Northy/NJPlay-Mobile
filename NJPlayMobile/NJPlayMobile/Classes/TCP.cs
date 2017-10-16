@@ -12,10 +12,11 @@ namespace NJPlayMobile.Classes
 {
     public class TCP
     {
-        public TcpClient client;
+        /*public TcpClient client;
         public StreamReader STR;
         public StreamWriter STW;
         public string receive;
+        public string conectando = "Conectando";
         public bool isConnected = false;
         public String input_to_send;
         public IPEndPoint IP_End; //variável global declarada
@@ -40,6 +41,7 @@ namespace NJPlayMobile.Classes
 
         public void Connect(string s, int i)
         {
+
             client = new TcpClient();
             IP_End = new IPEndPoint(IPAddress.Parse(s), i); //tentando declarar uma variável pública
             client.Connect(IP_End);
@@ -49,7 +51,7 @@ namespace NJPlayMobile.Classes
                 STR = new StreamReader(client.GetStream());
                 STW.AutoFlush = true;
                 worker1.DoWork += worker1_DoWork;
-                //worker2.DoWork += worker2_DoWork;
+                worker2.DoWork += worker2_DoWork;
                 worker1.RunWorkerAsync();
                 worker2.WorkerSupportsCancellation = true;
                 isConnected = true;
@@ -57,42 +59,36 @@ namespace NJPlayMobile.Classes
             return;
         }
 
-        public void TCPSend(String input_to_send)
+        public void TCPSend(string input_to_send)
+        {
+            isConnected = false;
+            STW.Write(input_to_send);
+            STW.Flush();
+            isConnected = true;
+            input_to_send = "";
+        }
+
+        private void worker2_DoWork(object sender, DoWorkEventArgs e)
         {
             client = new TcpClient();
+            IPEndPoint IP_End = new IPEndPoint(IPAddress.Parse(ip), port);
             client.Connect(IP_End);
             if (client.Connected)
             {
-                STW = new StreamWriter(client.GetStream());
                 STW.WriteLine(input_to_send);
                 STW.Flush();
                 input_to_send = "";
+                worker2.CancelAsync();
             }
         }
-
-        // código que eu tava testando inútil.
-        //private void worker2_DoWork(object sender, DoWorkEventArgs e)
-        //{
-        //    client = new TcpClient();
-        //    IPEndPoint IP_End = new IPEndPoint(IPAddress.Parse(ip), port);
-        //    client.Connect(IP_End);
-        //    if (client.Connected)
-        //    {
-        //        STW.WriteLine(input_to_send);
-        //        STW.Flush();
-        //        input_to_send = "";
-        //        worker2.CancelAsync();
-        //    }
-        //}
 
         private void worker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            while (client.Connected)
+            while (isConnected)
             {
-
                 receive = STR.ReadLine();
                 //implementar comandos de receber
             }
-        }
-    }   
+        }*/
+    }
 }

@@ -13,14 +13,9 @@ namespace NJPlayMobile.Pages
         {
             Title = "Menu";
 
-            Children.Add(new ConnectPage()
-            {
-                Title = "Conectar",
-                Icon = "connecticon.png"
-            });
             Children.Add(new ControlsPage()
             {
-                Title = "Controles",
+                Title = "NJPlay",
                 Icon = "playicon.png"
             });
         }
